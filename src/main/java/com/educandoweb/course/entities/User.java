@@ -1,13 +1,18 @@
 package com.educandoweb.course.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity //especifica para o JPA que isso é uma entidade 
+@Table(name="tb_user")
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L; //id padrão Serializable
@@ -20,6 +25,10 @@ public class User implements Serializable{
 	private String phone;
 	private String password;
 	
+	@OneToMany
+	private List <Order> orders= new ArrayList<>();
+	
+
 	public User() { //por está usando um framwork tem que por o construtor vazio
 		
 		
@@ -75,6 +84,12 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,8 +114,6 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 	
 
 }
