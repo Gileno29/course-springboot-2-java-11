@@ -2,9 +2,18 @@ package com.educandoweb.course.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity //especifica para o JPA que isso é uma entidade 
 public class User implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; //id padrão Serializable
+	
+	@Id //identifica como chave primária do BD a tabela
+	@GeneratedValue(strategy= GenerationType.IDENTITY) //implementa de forma automtica os ids no BD
 	private Long id;
 	private String name;
 	private String email;
