@@ -28,8 +28,8 @@ public class User implements Serializable{
 	private String password;
 	
 	@OneToMany
-	@JsonIgnore
-	private List <Order> orders= new ArrayList<>();
+	@JsonIgnore //impede o loop entre as relações
+	private List <Order> orders= new ArrayList<>();//um usuário tem vários pedidos
 	
 
 	public User() { //por está usando um framwork tem que por o construtor vazio
