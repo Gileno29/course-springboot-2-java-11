@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.course.entities.User;
-import com.educandoweb.course.services.UserServices;
+import com.educandoweb.course.entities.Category;
+import com.educandoweb.course.services.CategoryServices;
 
 @RestController //indica que é um recurso web implementado por um controlador Rest
-@RequestMapping(value="/Users") //caminho do recurso
-public class UserResource {
+@RequestMapping(value="/categories") //caminho do recurso
+public class CategoryResource {
 	
 	@Autowired
-	private UserServices service;
+	private CategoryServices service;
 	@GetMapping //indica que responde a um GET do htttp
-	public ResponseEntity<List<User>> findAll(){ //cria um metodo generico que retorna usuário(todos)
-		List<User> list= service.findAll();
+	public ResponseEntity<List<Category>> findAll(){ //cria um metodo generico que retorna usuário(todos)
+		List<Category> list= service.findAll();
 		return ResponseEntity.ok().body(list);//retorna um ok e o conteudo desejado
 		
 	}
 
 	@GetMapping(value="/{id}")//indica que a requisição tem um parammetro o ID
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj = service.findByID(id);
+	public ResponseEntity<Category> findById(@PathVariable Long id){
+		Category obj = service.findByID(id);
 		return ResponseEntity.ok().body(obj);
 		
 	}
